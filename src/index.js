@@ -6,10 +6,11 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
 import { withClientState } from 'apollo-link-state';
 
-import './index.css';
+
 import defaultState from './apollo/defaultState';
 import resolvers from './apollo/resolvers';
 import App from './App';
+import './sass/main.scss';
 
 const cache = new InMemoryCache();
 
