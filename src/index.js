@@ -1,18 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
 import { withClientState } from 'apollo-link-state';
 
+import './index.css';
+import defaultState from './apollo/defaultState';
+import resolvers from './apollo/resolvers';
+import App from './App';
+
 const cache = new InMemoryCache();
 
 const stateLink = withClientState({
     cache,
-    defaults,
+    defaults: defaultState,
     resolvers,
 });
 
@@ -22,8 +25,6 @@ const client = new ApolloClient({
         stateLink
     ])
 });
-
-
 
 ReactDOM.render(
     <ApolloProvider client={client}>
