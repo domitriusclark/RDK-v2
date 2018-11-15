@@ -2,8 +2,8 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 
-import IncrementForm from './IncrementForm';
-import Counter from './Counter';
+import IncrementForm from '../Counter/IncrementForm';
+import Counter from '../Counter/Counter';
 
 export const GET_COUNTER = gql`
     {
