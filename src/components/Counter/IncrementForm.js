@@ -1,25 +1,52 @@
 import React, { Component } from 'react';
+import { Query, Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
+import { Link } from 'react-router-dom';
 
-class IncrementCount extends Component {
+import { GET_COUNTER } from './Counter';
+
+const INCREMENT_COUNT_BY = gql`
+    mutation IncrementCountBy($incrementBy: Int!) {
+        incrementCountBy(incrementBy: $incrementBy) @client {
+            incrementBy
+        }
+    }
+`;
+
+class IncrementForm extends Component {
     state = {}
     render() {
-        const { props } = this;
-        const { incrementCountBy } = props;
         let input;
         return ( 
-            <form 
-                onSubmit={(e) => {
-                    let { value } = input;
-                    e.preventDefault();
-                    incrementCountBy({ variables: { incrementBy: parseInt(value)  }})
-                    value = '';
+            <Query query={GET_COUNTER}>
+                {({ data }) => {
+                    const { counter } = data;
+
+                    return (
+                        <Mutation mutation={INCREMENT_COUNT_BY} vairables={counter}>
+                            {incrementCountBy => (
+                                <div>
+                                    <form 
+                                        onSubmit={(e) => {
+                                            let { value } = input;
+                                            e.preventDefault();
+                                            incrementCountBy({ variables: { incrementBy: parseInt(value)  }})
+                                            value = '';
+                                        }}
+                                    >
+                                        <input ref={node => { input = node }} placeholder={`Pick a number`}/>
+                                        <button type="submit">Change the increment number</button>                                    
+                                    </form> 
+                                    <Link to="/">Home</Link>
+                                    <Link to="/counter">Counter</Link>
+                                </div>                                
+                            )}                        
+                        </Mutation>
+                    )
                 }}
-            >
-                <input ref={node => { input = node }} placeholder={`Pick a number`}/>
-                <button type="submit">Change the increment number</button>                                    
-            </form>             
+            </Query>            
         );
     }
 }
  
-export default IncrementCount;
+export default IncrementForm;
