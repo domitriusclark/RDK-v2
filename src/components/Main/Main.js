@@ -6,7 +6,18 @@ class Main extends Component {
         const { DefaultComponent } = this.props;
         return (
             <div>
-                <DefaultComponent />                
+                {
+                    !DefaultComponent ? (
+                        <div>
+                            <Link to="/counter">To the Counter</Link>
+                            <Link to="/form">To the Increment form</Link>
+                        </div>
+                    )
+                    : (
+                        <DefaultComponent /> 
+                    )
+                }
+                               
             </div>                                                    
         )
     };

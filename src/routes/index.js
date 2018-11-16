@@ -11,6 +11,7 @@ export default class Routes extends Component {
             <Fragment>
                 <Router>
                     <Switch>
+                        <Route exact path="/" component={Main} />
                         <Route path="/counter" render={() => (<Main DefaultComponent={Counter} />)} />
                         <Route path="/form" render={() => (<Main DefaultComponent={IncrementForm} />)} /> 
                     </Switch>
