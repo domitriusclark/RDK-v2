@@ -37,7 +37,6 @@ class IncrementForm extends Component {
                                         <input ref={node => { input = node }} placeholder={`Pick a number`}/>
                                         <button type="submit">Change the increment number</button>                                    
                                     </form> 
-                                    <Link to="/">Home</Link>
                                     <Link to="/counter">Counter</Link>
                                 </div>                                
                             )}                        
