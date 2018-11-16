@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 class Main extends Component {
     render() {
+        const { DefaultComponent } = this.props;
         return (
             <div>
-                <Link to="/counter" >To the counter</Link>
-                <Link to="/form" >To the form</Link>
+                <DefaultComponent />                
             </div>                                                    
         )
     };

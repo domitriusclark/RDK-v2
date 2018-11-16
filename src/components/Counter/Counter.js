@@ -32,8 +32,7 @@ const Counter = () => {
                         {incrementCount => (
                             <div>
                                 <h1>{count}</h1>
-                                <button onClick={incrementCount}>Increment by {incrementBy}</button>
-                                <Link to="/">Home</Link>
+                                <button onClick={incrementCount}>Increment by {incrementBy}</button>                    
                                 <Link to="/form">Form</Link>
                             </div>   
                         )}                 
